@@ -1,15 +1,14 @@
 import { Layout } from "./Layout/Layout";
-import { AppBar } from "./AppBar/AppBar";
-import { TaskForm } from "./TaskForm/TaskForm";
-import { TaskList } from "./TaskList/TaskList";
+
+import { ContactForm } from "./ContactForm/ContactForm";
+import { ContactList } from "./ContactList/ContactList";
+import { SearchBox } from "./SearchBox/SearchBox";
 //
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks } from "../redux/operations";
+import { fetchContacts } from "../redux/contactsOps";
 
 import { getError, getIsLoading } from "../redux/selectors";
-
-//https://66b367497fba54a5b7eccf5c.mockapi.io/:endpoint
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -17,15 +16,17 @@ export const App = () => {
   const error = useSelector(getError);
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
     <Layout>
-      <AppBar />
-      <TaskForm />
+      <h1>PHONEBOOK </h1>
+
+      <ContactForm />
+      <SearchBox />
       {isLoading && !error && <b>Request in progress...</b>}
-      <TaskList />
+      <ContactList />
     </Layout>
   );
 };
