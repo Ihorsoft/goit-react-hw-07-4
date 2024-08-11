@@ -21,7 +21,7 @@ export const App = () => {
 
   return (
     <Layout>
-      <h1>PHONEBOOK</h1>
+      <h1>PHONEBOOK </h1>
 
       <ContactForm />
       <SearchBox />
